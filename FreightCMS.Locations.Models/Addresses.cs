@@ -1,5 +1,11 @@
 namespace FreightCMS.Locations.Models;
 
+public class Coordinates
+{
+    public double Latitude { get; set; }
+    public double Longitude { get; set; }
+}
+
 public class AddressModel
 {
     public required string Id { get; set; }
@@ -17,4 +23,5 @@ public class AddressModel
     /// The type of address. For example, Distribution Center, Store, Convention, School, Office, Port, etc.
     /// </summary>
     public required string Type { get; set; }
+    public Coordinates? Coordinates { get; set; }
 }
