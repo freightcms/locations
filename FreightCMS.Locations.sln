@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreightCMS.Locations.Entity
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreightCMS.Locations.Models", "FreightCMS.Locations.Models\FreightCMS.Locations.Models.csproj", "{A9DE3370-6EA4-42E4-BE45-4AEDE6EEF729}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreightCMS.Locations.Schemas", "FreightCMS.Locations.Schemas\FreightCMS.Locations.Schemas.csproj", "{C809F836-C178-41CD-8318-790BA83D9CA3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
