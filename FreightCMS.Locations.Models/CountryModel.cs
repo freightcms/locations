@@ -1,5 +1,9 @@
 namespace FreightCMS.Locations.Models;
 
+/// <summary>
+/// Country Model meant for provindg lookup data for countries. Optionaly you extend the address model
+/// and add the country Id and ovverride the <see cref="AddressModel.Country"/> property with a reference to this model.
+/// </summary>
 public class CountryModel
 {
     public required string Id { get; set; }

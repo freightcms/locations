@@ -26,7 +26,6 @@ public class LocationDbContext : DbContext
             build.Property(entity => entity.Local).IsRequired();
             build.Property(entity => entity.PostalCode).IsRequired();
             build.Property(entity => entity.Country).IsRequired();
-            build.Property(entity => entity.StateOrProvince).IsRequired();
             build.Property(entity => entity.Region).IsRequired();
             build.Property(entity => entity.Type).IsRequired();
         });

@@ -12,10 +12,18 @@ public class AddressModel
     public required string Line1 { get; set; }
     public string? Line2 { get; set; }
     public string? Line3 { get; set; }
+    /// <summary>
+    /// The city or town.
+    /// </summary>
     public required string Local { get; set; }
+    /// <summary>
+    /// The region or state.
+    /// </summary>
     public required string Region { get; set; }
     public required string PostalCode { get; set; }
-    public required string StateOrProvince { get; set; }
+    /// <summary>
+    /// The country.
+    /// </summary>
     public required string Country { get; set; }
     public string? Description { get; set; }
     public string? Attention { get; set; }
