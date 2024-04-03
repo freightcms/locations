@@ -1,2 +1,4 @@
-github.com/freightcms/common/models v0.0.0-20240403025859-0ce4b89073e5 h1:p1GQ/nm2GOqS0qhwJbXXj5ignQQePWAUFJG7kMSRQJQ=
-github.com/freightcms/common/models v0.0.0-20240403025859-0ce4b89073e5/go.mod h1:EgclrPIgkbQ6ZpraNVO2h3mU7S9IniQB+Wb2gT3a508=
+github.com/freightcms/common v1.0.0 h1:y5mBEzT0tSYFwP9F43smdRwKh4rTMVetl1NVf5NKrEY=
+github.com/freightcms/common v1.0.0/go.mod h1:8+0hOOf0hd+I5bxlI++kOUZhXimW9SzcP8cQDyPXlWI=
+github.com/freightcms/common/models v0.0.0-20240403030341-1f67719947fa h1:2Uguc1E3x7EBKJeAqdQ7lG41yZrrYL6UosIZB6Cb9us=
+github.com/freightcms/common/models v0.0.0-20240403030341-1f67719947fa/go.mod h1:EgclrPIgkbQ6ZpraNVO2h3mU7S9IniQB+Wb2gT3a508=
