@@ -1,6 +1,10 @@
 package models
 
-import common "github.com/freightcms/common/models"
+import (
+	"fmt"
+
+	common "github.com/freightcms/common/models"
+)
 
 // ISO 3166-1 alpha-2 country codes
 type CountryCode string
@@ -257,14 +261,170 @@ const (
 	ZW CountryCode = "ZW" // Zimbabwe
 )
 
+var (
+	ValidCountryCodes = []CountryCode{
+		AD, AE, AF, AG, AI, AL, AM, AO, AR, AS,
+		AT, AU, AW, AX, AZ, BA, BB, BD, BE, BF,
+		BG, BH, BI, BJ, BL, BM, BN, BO, BQ, BR,
+		BS, BT, BV, BW, BY, BZ, CA, CC, CD, CF,
+		CH, CI, CK, CL, CM, CN, CO, CR, CU, CV,
+		CW, CX, CY, CZ, DE, DJ, DK, DM, DO, DZ,
+		EC, EE, EG, EH, ER, ES, ET, FI, FJ, FK,
+		FM, FO, FR, GA, GB, GD, GE, GF, GG, GH,
+		GI, GL, GM, GN, GP, GQ, GR, GS, GT, GU,
+		GW, GY, HK, HM, HN, HR, HT, HU, ID, IE,
+		IL, IM, IN, IO, IQ, IR, IS, IT, JE, JM,
+		JO, JP, KE, KG, KH, KI, KM, KN, KP, KR,
+		KW, KY, KZ, LA, LB, LC, LI, LK, LR, LS,
+		LT, LU, LV, LY, MA, MC, MD, ME, MF, MG,
+		MH, MK, ML, MM, MN, MO, MP, MQ, MR, MS,
+		MT, MU, MV, MW, MX, MY, MZ, NA, NC, NE,
+		NF, NG, NI, NL, NO, NP, NR, NU, NZ, OM,
+		PA, PE, PF, PG, PH, PK, PL, PM, PN, PR,
+		PS, PT, PW, PY, QA, RE, RO, RS, RU, RW,
+		SA, SB, SC, SD, SE, SG, SH, SI, SJ, SK,
+		SL, SM, SN, SO, SR, SS, ST, SV, SX, SY,
+		SZ, TC, TD, TF, TG, TH, TJ, TK, TL, TM,
+		TN, TO, TR, TT, TV, TW, TZ, UA, UG, UM,
+		US, UY, UZ, VA, VC, VE, VG, VI, VN, VU,
+		WF, WS, YE, YT, ZA, ZM, ZW,
+	}
+	ValidLanguageCodes = []LanguageCode{
+		AAV, AFR, ALG, ALV, APA, AQL, ART, ATH, AUF, AUS,
+		AWD, AZC, BAD, BAI, BAT, BER, BIH, BNT, BTK, CAL,
+		CAU, CBA, CCN, CCS, CDC, CDD, CEL, CMC, CPE, CPF,
+		CPP, CRP, CSU, CUS, DAY, DMN, DRA, EGX, EUQ, FIU,
+		FOX, GEM, GME, GMQ, GMW, GRK, HMX, HOK, HYX, IIR,
+		JPX, KAR, KDO, KHI, KRO, MAP, MKH, MNO, MUN, MYN,
+		NAH, NAI, NGF, NIC, NUB, OMQ, OMV, OTO, PAA, PHI,
+		PLF, POZ, PQE, PQW, PRA, QWE, ROA, SAI, SAL, SDV,
+		SEM, SGN, SIO, SIT, SLA, SMI, SON, SQJ, SSA, SYD,
+		TAI, TBQ, TRK, TUP, TUT, TUW, URJ, WAK, WEN, XGN,
+		YPK, ZHX, ZLE, ZLS, ZLW, ZND,
+	}
+)
+
+// LanguageCode ISO 639-5 language codes
+// see https://en.wikipedia.org/wiki/List_of_ISO_639-5_codes
+type LanguageCode string
+
+const (
+	AAV LanguageCode = "AAV" // Austro-Asiatic languages
+	AFR LanguageCode = "AFR" // Afro-Asiatic languages
+	ALG LanguageCode = "ALG" // Algonguian languages
+	ALV LanguageCode = "ALV" // Atlantic-Congo languages
+	APA LanguageCode = "APA" // Apachean languages
+	AQL LanguageCode = "AQL" // Algic languages
+	ART LanguageCode = "ART" // Artificial languages
+	ATH LanguageCode = "ATH" // Athapaskan languages
+	AUF LanguageCode = "AUF" // Austronesian languages
+	AUS LanguageCode = "AUS" // Australian languages
+	AWD LanguageCode = "AWD" // Arawakan languages
+	AZC LanguageCode = "AZC" // Uto-Aztecan languages
+	BAD LanguageCode = "BAD" // Banda languages
+	BAI LanguageCode = "BAI" // Bamileke languages
+	BAT LanguageCode = "BAT" // Baltic languages
+	BER LanguageCode = "BER" // Berber languages
+	BIH LanguageCode = "BIH" // Bihari languages
+	BNT LanguageCode = "BNT" // Bantu languages
+	BTK LanguageCode = "BTK" // Batak languages
+	CAL LanguageCode = "CAL" // Cariban languages
+	CAU LanguageCode = "CAU" // Caucasian languages
+	CBA LanguageCode = "CBA" // Chibchan languages
+	CCN LanguageCode = "CCN" // Chinookan languages
+	CCS LanguageCode = "CCS" // Kordofanian languages
+	CDC LanguageCode = "CDC" // Chadic languages
+	CDD LanguageCode = "CDD" // Caddoan languages
+	CEL LanguageCode = "CEL" // Celtic languages
+	CMC LanguageCode = "CMC" // Chamic languages
+	CPE LanguageCode = "CPE" // Creoles and pidgins, English based
+	CPF LanguageCode = "CPF" // Creoles and pidgins, French-based
+	CPP LanguageCode = "CPP" // Creoles and pidgins, Portuguese-based
+	CRP LanguageCode = "CRP" // Creoles and pidgins
+	CSU LanguageCode = "CSU" // Central Sudanic languages
+	CUS LanguageCode = "CUS" // Cushitic languages
+	DAY LanguageCode = "DAY" // Land Dayak languages
+	DMN LanguageCode = "DMN" // Mande languages
+	DRA LanguageCode = "DRA" // Dravidian languages
+	EGX LanguageCode = "EGX" // Egyptian languages
+	EUQ LanguageCode = "EUQ" // Basque languages
+	FIU LanguageCode = "FIU" // Finno-Ugrian languages
+	FOX LanguageCode = "FOX" // Formosan languages
+	GEM LanguageCode = "GEM" // Germanic languages
+	GME LanguageCode = "GME" // East Germanic languages
+	GMQ LanguageCode = "GMQ" // North Germanic languages
+	GMW LanguageCode = "GMW" // West Germanic languages
+	GRK LanguageCode = "GRK" // Greek languages
+	HMX LanguageCode = "HMX" // Hmong-Mien languages
+	HOK LanguageCode = "HOK" // Hokan languages
+	HYX LanguageCode = "HYX" // Armenian languages
+	IIR LanguageCode = "IIR" // Indo-Iranian languages
+	JPX LanguageCode = "JPX" // Japanese languages
+	KAR LanguageCode = "KAR" // Karen languages
+	KDO LanguageCode = "KDO" // Kadu languages
+	KHI LanguageCode = "KHI" // Khoisan languages
+	KRO LanguageCode = "KRO" // Kru languages
+	MAP LanguageCode = "MAP" // Austronesian languages
+	MKH LanguageCode = "MKH" // Mon-Khmer languages
+	MNO LanguageCode = "MNO" // Manobo languages
+	MUN LanguageCode = "MUN" // Munda languages
+	MYN LanguageCode = "MYN" // Mayan languages
+	NAH LanguageCode = "NAH" // Nahuatl languages
+	NAI LanguageCode = "NAI" // North American Indian languages
+	NGF LanguageCode = "NGF" // Trans-New Guinea languages
+	NIC LanguageCode = "NIC" // Niger-Kordofanian languages
+	NUB LanguageCode = "NUB" // Nubian languages
+	OMQ LanguageCode = "OMQ" // Oto-Manguean languages
+	OMV LanguageCode = "OMV" // Omotic languages
+	OTO LanguageCode = "OTO" // Otomian languages
+	PAA LanguageCode = "PAA" // Papuan languages
+	PHI LanguageCode = "PHI" // Philippine languages
+	PLF LanguageCode = "PLF" // Central Malayo-Polynesian languages
+	POZ LanguageCode = "POZ" // Malayo-Polynesian languages
+	PQE LanguageCode = "PQE" // Eastern Malayo-Polynesian languages
+	PQW LanguageCode = "PQW" // Western Malayo-Polynesian languages
+	PRA LanguageCode = "PRA" // Prakrit languages
+	QWE LanguageCode = "QWE" // Quechuan languages
+	ROA LanguageCode = "ROA" // Romance languages
+	SAI LanguageCode = "SAI" // South American Indian languages
+	SAL LanguageCode = "SAL" // Salishan languages
+	SDV LanguageCode = "SDV" // Eastern Sudanic languages
+	SEM LanguageCode = "SEM" // Semitic languages
+	SGN LanguageCode = "SGN" // Sign languages
+	SIO LanguageCode = "SIO" // Siouan languages
+	SIT LanguageCode = "SIT" // Sino-Tibetan languages
+	SLA LanguageCode = "SLA" // Slavic languages
+	SMI LanguageCode = "SMI" // Sami languages
+	SON LanguageCode = "SON" // Songhai languages
+	SQJ LanguageCode = "SQJ" // Albanian languages
+	SSA LanguageCode = "SSA" // Nilo-Saharan languages
+	SYD LanguageCode = "SYD" // Samoyedic languages
+	TAI LanguageCode = "TAI" // Tai-Kadai languages
+	TBQ LanguageCode = "TBQ" // Tibeto-Burman languages
+	TRK LanguageCode = "TRK" // Turkic languages
+	TUP LanguageCode = "TUP" // Tupian languages
+	TUT LanguageCode = "TUT" // Altaic languages
+	TUW LanguageCode = "TUW" // Tungusic languages
+	URJ LanguageCode = "URJ" // Uralic languages
+	WAK LanguageCode = "WAK" // Wakashan languages
+	WEN LanguageCode = "WEN" // Sorbian languages
+	XGN LanguageCode = "XGN" // Mongolic languages
+	YPK LanguageCode = "YPK" // Yupik languages
+	ZHX LanguageCode = "ZHX" // Chinese languages
+	ZLE LanguageCode = "ZLE" // Zenaga languages
+	ZLS LanguageCode = "ZLS" // South Slavic languages
+	ZLW LanguageCode = "ZLW" // West Slavic languages
+	ZND LanguageCode = "ZND" // Zande languages
+)
+
 // Country Model meant for providing lookup data for countries. Optionally you extend the address model
 // and add the country Id and override the Address.Country property with a reference to this model.
 type Country struct {
 	Id               string           `json:"id"`
 	Name             string           `json:"name"`                       // Long display name of Country
-	Code             CountryCode      `json:"code"`                       // ISO 3166-1 alpha-2 code
+	Code             CountryCode      `json:"code"`                       // ISO 3166-5 alpha-3 code
 	Currency         *common.Currency `json:"currency,omitempty"`         // Currency used in the country
-	Language         *string          `json:"language,omitempty"`         // ISO 639-1 language code
+	Language         *LanguageCode    `json:"language,omitempty"`         // ISO 639-1 language code
 	Region           *string          `json:"region,omitempty"`           // Region of the country. E.g. Africa, Americas, Asia, Europe, Oceania
 	SubRegion        *string          `json:"subRegion,omitempty"`        // Subregion of the country. E.g. Southern Europe
 	Capital          *string          `json:"capital,omitempty"`          // Capital city of the country
@@ -274,5 +434,33 @@ type Country struct {
 	FlagEmojiUnicode *string          `json:"flagEmojiUnicode,omitempty"` // Unicode flag emoji
 }
 
-// Countries is a collection of Country
-type Countries []*Country
+func (c *Country) Validate() []error {
+	var (
+		errors            []error
+		foundCountryCode  = false
+		foundLanguageCode = false
+	)
+
+	for _, code := range ValidCountryCodes {
+		if c.Code == code {
+			foundCountryCode = true
+			break
+		}
+	}
+	if !foundCountryCode {
+		errors = append(errors, fmt.Errorf("invalid country code: %s", c.Code))
+	}
+	if c.Language != nil { // language is not required
+		for _, code := range ValidLanguageCodes {
+			if *c.Language == code {
+				foundLanguageCode = true
+				break
+			}
+		}
+		if !foundLanguageCode {
+			errors = append(errors, fmt.Errorf("invalid language code: %s", *c.Language))
+		}
+	}
+
+	return errors
+}
