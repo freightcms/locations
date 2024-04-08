@@ -10,10 +10,10 @@ type Coordinates struct {
 // Validate checks if the coordinates are within the valid range for latitude and longitude
 func (c *Coordinates) Validate() error {
 	if c.Latitude < -90 || c.Latitude > 90 {
-		return errors.New("Latitude must be between -90 and 90")
+		return errors.New("latitude must be between -90 and 90")
 	}
 	if c.Longitude < -180 || c.Longitude > 180 {
-		return errors.New("Longitude must be between -180 and 180")
+		return errors.New("longitude must be between -180 and 180")
 	}
 	return nil
 }
