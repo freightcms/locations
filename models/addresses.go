@@ -18,17 +18,30 @@ func (c *Coordinates) Validate() error {
 	return nil
 }
 
+type AddressType string
+
+const (
+	Physical AddressType = "Physical"
+	Mailing  AddressType = "Mailing"  // Mailing address
+	Billing  AddressType = "Billing"  // Billing address
+	Shipping AddressType = "Shipping" // Shipping address
+	Work     AddressType = "Work"     // Work
+	Home     AddressType = "Home"     // Home
+	Virtual  AddressType = "Virtual"  // Virtual address
+	Other    AddressType = "Other"    // Other
+)
+
 // AddressModel is a model meant for providing lookup data for addresses. Optionally you extend the address model
 type AddressModel struct {
-	Id          string  `json:"id"`
-	Line1       string  `json:"line1"`
-	Line2       *string `json:"line2,omitempty"`
-	Line3       *string `json:"line3,omitempty"`
-	Local       string  `json:"local"`
-	Region      string  `json:"region"`
-	PostalCode  string  `json:"postalCode"`
-	Country     string  `json:"country"`
-	Description *string `json:"description,omitempty"`
-	Attention   *string `json:"attention,omitempty"`
-	Type        string  `json:"type"`
+	Id          string      `json:"id"`
+	Line1       string      `json:"line1"`                 // Street address, P.O. box, company name, c/o
+	Line2       *string     `json:"line2,omitempty"`       // Apartment, suite, unit, building, floor, etc.
+	Line3       *string     `json:"line3,omitempty"`       // Floor, Bin, Section of Warehouse, Port # etc.
+	Local       string      `json:"local"`                 // City, town, village, etc.
+	Region      string      `json:"region"`                // State, province within Country
+	PostalCode  string      `json:"postalCode"`            // Postal code
+	Country     CountryCode `json:"country"`               // Country
+	Description *string     `json:"description,omitempty"` // Description of the address
+	Attention   *string     `json:"attention,omitempty"`   // Attention of the address
+	Type        AddressType `json:"type"`                  // Type of address, e.g. "home", "work", "billing", "shipping", "other"
 }
