@@ -420,18 +420,18 @@ const (
 // Country Model meant for providing lookup data for countries. Optionally you extend the address model
 // and add the country Id and override the Address.Country property with a reference to this model.
 type Country struct {
-	Id               string          `json:"id"`
-	Name             string          `json:"name"`                       // Long display name of Country
-	Code             CountryCode     `json:"code"`                       // ISO 3166-5 alpha-3 code
-	Currency         common.Currency `json:"currency,omitempty"`         // Currency used in the country
-	Language         LanguageCode    `json:"language,omitempty"`         // ISO 639-5 language code
-	Region           string          `json:"region,omitempty"`           // Region of the country. E.g. Africa, Americas, Asia, Europe, Oceania
-	SubRegion        string          `json:"subRegion,omitempty"`        // Subregion of the country. E.g. Southern Europe
-	Capital          string          `json:"capital,omitempty"`          // Capital city of the country
-	CallingCode      string          `json:"callingCode,omitempty"`      // International calling code
-	Flag             string          `json:"flag,omitempty"`             // URL to flag image
-	FlagEmoji        string          `json:"flagEmoji,omitempty"`        // URL to flag emoji
-	FlagEmojiUnicode string          `json:"flagEmojiUnicode,omitempty"` // Unicode flag emoji
+	Id               string           `json:"id"`
+	Name             string           `json:"name"`                       // Long display name of Country
+	Code             CountryCode      `json:"code"`                       // ISO 3166-5 alpha-3 code
+	Currency         *common.Currency `json:"currency,omitempty"`         // Currency used in the country
+	Language         LanguageCode     `json:"language,omitempty"`         // ISO 639-5 language code
+	Region           string           `json:"region,omitempty"`           // Region of the country. E.g. Africa, Americas, Asia, Europe, Oceania
+	SubRegion        string           `json:"subRegion,omitempty"`        // Subregion of the country. E.g. Southern Europe
+	Capital          string           `json:"capital,omitempty"`          // Capital city of the country
+	CallingCode      string           `json:"callingCode,omitempty"`      // International calling code
+	Flag             string           `json:"flag,omitempty"`             // URL to flag image
+	FlagEmoji        string           `json:"flagEmoji,omitempty"`        // URL to flag emoji
+	FlagEmojiUnicode string           `json:"flagEmojiUnicode,omitempty"` // Unicode flag emoji
 }
 
 func (c *Country) Validate() []error {
