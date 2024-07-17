@@ -17,6 +17,7 @@ type CreateLocationSchema struct {
 	Description *string            `json:"description,omitempty" xml:"description" form:"description"` // Description of the address
 	Attention   *string            `json:"attention,omitempty" xml:"attention" form:"attention"`       // Attention of the address
 	Type        models.AddressType `json:"type" xml:"type" form:"type"`                                // Type of address, e.g. "home", "work", "billing", "shipping", "other"
+	Notes       *string            `json:"notes" xml:"notes" form:"notes"`                             // Notes are details about a delivery such as leaving by a back door, leave at a paticular location
 }
 
 type LocationSchema struct {
