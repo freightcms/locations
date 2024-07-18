@@ -20,6 +20,8 @@ type CreateLocationSchema struct {
 	Notes       *string            `json:"notes" xml:"notes" form:"notes"`                             // Notes are details about a delivery such as leaving by a back door, leave at a paticular location
 }
 
+// LocationSchema is for a standard schema or []*schemas.LocationSchema array from a Web API or service.
+// all fields are serialized to pascal case.
 type LocationSchema struct {
 	Id string `json:"id" xml:"id" form:"id" binding:"required"`
 	CreateLocationSchema
