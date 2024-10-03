@@ -24,7 +24,7 @@ func (c *Coordinates) Validate() error {
 type AddressType string
 
 const (
-	Physical AddressType = "Physical"
+	Physical AddressType = "Physical" // Physical location for a resource/entity
 	Mailing  AddressType = "Mailing"  // Mailing address
 	Billing  AddressType = "Billing"  // Billing address
 	Shipping AddressType = "Shipping" // Shipping address
@@ -36,7 +36,7 @@ const (
 
 // AddressModel is a model meant for providing lookup data for addresses. Optionally you extend the address model
 type AddressModel struct {
-	Id          string      `json:"id" bson:"id"`
+	Id          interface{} `json:"id" bson:"id"`                             // unique identifier of the address model.
 	Line1       string      `json:"line1" bson:"line1"`                       // Street address, P.O. box, company name, c/o
 	Line2       *string     `json:"line2,omitempty" bson:"line2"`             // Apartment, suite, unit, building, floor, etc.
 	Line3       *string     `json:"line3,omitempty" bson:"line3"`             // Floor, Bin, Section of Warehouse, Port # etc.
