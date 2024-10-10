@@ -3,6 +3,7 @@ github.com/freightcms/common v1.0.0 h1:y5mBEzT0tSYFwP9F43smdRwKh4rTMVetl1NVf5NKr
 github.com/freightcms/common v1.0.0/go.mod h1:8+0hOOf0hd+I5bxlI++kOUZhXimW9SzcP8cQDyPXlWI=
 github.com/freightcms/common/models v0.0.0-20240403030341-1f67719947fa h1:2Uguc1E3x7EBKJeAqdQ7lG41yZrrYL6UosIZB6Cb9us=
 github.com/freightcms/common/models v0.0.0-20240403030341-1f67719947fa/go.mod h1:EgclrPIgkbQ6ZpraNVO2h3mU7S9IniQB+Wb2gT3a508=
+github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
 github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
 golang.org/x/mod v0.8.0/go.mod h1:iBbtSCu2XBx23ZKBPSOrRkjjQPZFPuis4dIYUhu/chs=
 golang.org/x/net v0.21.0/go.mod h1:bIjVDfnllIU7BJ2DNgfnXvpSvtn8VRwhlsaeUTyUS44=
